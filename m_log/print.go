@@ -3,7 +3,7 @@ package m_log
 import "os"
 
 func (t *Ts) Fatal(fields H) *Ts {
-	if t.config.Level >= levelFatal {
+	if t.config.Level < levelFatal {
 		return t
 	}
 	fields["level"] = levelToString(levelFatal)
@@ -13,7 +13,7 @@ func (t *Ts) Fatal(fields H) *Ts {
 }
 
 func (t *Ts) Error(fields H) *Ts {
-	if t.config.Level >= levelError {
+	if t.config.Level < levelError {
 		return t
 	}
 	fields["level"] = levelToString(levelError)
@@ -21,7 +21,7 @@ func (t *Ts) Error(fields H) *Ts {
 }
 
 func (t *Ts) Warn(fields H) *Ts {
-	if t.config.Level >= levelWarn {
+	if t.config.Level < levelWarn {
 		return t
 	}
 	fields["level"] = levelToString(levelWarn)
@@ -29,7 +29,7 @@ func (t *Ts) Warn(fields H) *Ts {
 }
 
 func (t *Ts) Info(fields H) *Ts {
-	if t.config.Level >= levelInfo {
+	if t.config.Level < levelInfo {
 		return t
 	}
 	fields["level"] = levelToString(levelInfo)
@@ -37,7 +37,7 @@ func (t *Ts) Info(fields H) *Ts {
 }
 
 func (t *Ts) Debug(fields H) *Ts {
-	if t.config.Level >= levelDebug {
+	if t.config.Level < levelDebug {
 		return t
 	}
 	fields["level"] = levelToString(levelDebug)
@@ -45,7 +45,7 @@ func (t *Ts) Debug(fields H) *Ts {
 }
 
 func (t *Ts) Trace(fields H) *Ts {
-	if t.config.Level >= levelTrace {
+	if t.config.Level < levelTrace {
 		return t
 	}
 	fields["level"] = levelToString(levelTrace)
