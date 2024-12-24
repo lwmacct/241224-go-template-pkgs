@@ -68,9 +68,9 @@ func NewConfig() *Config {
 		File:             fileName,
 		OrderedKeys:      []string{"time", "level", "msg", "info", "error", "warn", "data", "flags"},
 		CallerClip:       "",
-		RotateMaxSize:    10,
-		RotateMaxAge:     10,
-		RotateMaxBackups: 10,
+		RotateMaxSize:    100,
+		RotateMaxAge:     90,
+		RotateMaxBackups: 3,
 		RotateLocalTime:  true,
 		RotateCompress:   true,
 	}

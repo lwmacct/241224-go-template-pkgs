@@ -12,7 +12,7 @@ func NewTs(config *Config) *Ts {
 }
 
 func Fatal(fields H) *Ts {
-	if ts.config.Level <= levelFatal {
+	if ts.config.Level >= levelFatal {
 		return ts
 	}
 
@@ -23,7 +23,7 @@ func Fatal(fields H) *Ts {
 }
 
 func Error(fields H) *Ts {
-	if ts.config.Level <= levelError {
+	if ts.config.Level >= levelError {
 		return ts
 	}
 	fields["level"] = levelToString(levelError)
@@ -31,7 +31,7 @@ func Error(fields H) *Ts {
 }
 
 func Warn(fields H) *Ts {
-	if ts.config.Level <= levelWarn {
+	if ts.config.Level >= levelWarn {
 		return ts
 	}
 	fields["level"] = levelToString(levelWarn)
@@ -39,7 +39,7 @@ func Warn(fields H) *Ts {
 }
 
 func Info(fields H) *Ts {
-	if ts.config.Level <= levelInfo {
+	if ts.config.Level >= levelInfo {
 		return ts
 	}
 	fields["level"] = levelToString(levelInfo)
@@ -47,7 +47,7 @@ func Info(fields H) *Ts {
 }
 
 func Debug(fields H) *Ts {
-	if ts.config.Level <= levelDebug {
+	if ts.config.Level >= levelDebug {
 		return ts
 	}
 	fields["level"] = levelToString(levelDebug)
@@ -55,7 +55,7 @@ func Debug(fields H) *Ts {
 }
 
 func Trace(fields H) *Ts {
-	if ts.config.Level <= levelTrace {
+	if ts.config.Level >= levelTrace {
 		return ts
 	}
 	fields["level"] = levelToString(levelTrace)
