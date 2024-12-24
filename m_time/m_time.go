@@ -3,7 +3,7 @@ package m_time
 import (
 	"time"
 
-	"github.com/lwmacct/241220-go-pkgs/241222/m_to"
+	"github.com/lwmacct/241224-go-template-pkgs/m_to"
 )
 
 type Cfg struct {
