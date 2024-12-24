@@ -1,1 +1,1 @@
-# 241224-go-template-pkgs
+# Go 模板项目的包引用
