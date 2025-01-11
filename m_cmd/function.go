@@ -7,6 +7,7 @@ import (
 	"path"
 	"reflect"
 	"runtime"
+	"slices"
 	"strconv"
 	"strings"
 	"time"
@@ -52,7 +53,7 @@ func bindFieldTag(cmd *cobra.Command, val reflect.Value, prefix string, groupNam
 		}
 
 		// 获取字段的组信息
-		if tag.Group != "" && !contains(groupNames, tag.Group) {
+		if tag.Group != "" && !slices.Contains(groupNames, tag.Group) {
 			// 如果字段的组信息不在指定的组中，则跳过
 			continue
 		}
@@ -242,15 +243,6 @@ func bindFieldTag(cmd *cobra.Command, val reflect.Value, prefix string, groupNam
 			}
 		}
 	}
-}
-
-func contains(s []string, str string) bool {
-	for _, v := range s {
-		if v == str {
-			return true
-		}
-	}
-	return false
 }
 
 func toKebabCase(s string) string {
