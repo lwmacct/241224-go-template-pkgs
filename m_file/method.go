@@ -1,14 +1,21 @@
 package m_file
 
-import "bytes"
+import (
+	"bytes"
+	"sync"
+)
 
 type Ts struct {
+	once sync.Once
 }
 
-var ts *Ts = nil
+var ts *Ts = new(Ts)
 
 func New() *Ts {
-	return &Ts{}
+	t := ts
+	t.once.Do(func() {
+	})
+	return t
 }
 
 func (t *Ts) CreateEmptyFile(path string) error {
