@@ -1,6 +1,6 @@
 module github.com/lwmacct/241224-go-template-pkgs
 
-go 1.23.4
+go 1.24.0
 
 require (
 	github.com/cespare/xxhash/v2 v2.3.0
