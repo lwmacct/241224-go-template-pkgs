@@ -147,9 +147,23 @@ func colorizeJSONValues(fields H, orderedKeys []string) string {
 		builder.WriteString(key)
 		builder.WriteString(`":`)
 
-		valueBytes, err := json.Marshal(value)
-		if err != nil {
-			valueBytes = []byte(`"` + fmt.Sprintf("%v", value) + `"`)
+		// 声明valueBytes变量
+		var valueBytes []byte
+
+		// 处理error类型值
+		if err, ok := value.(error); ok {
+			// 直接使用一个JSON安全的字符串表示
+			escapedStr := strings.Replace(err.Error(), `"`, `\"`, -1)
+			valueBytes = []byte(`"` + escapedStr + `"`)
+		} else {
+			// 非error类型才尝试JSON序列化
+			var err error
+			valueBytes, err = json.Marshal(value)
+			if err != nil {
+				// 序列化失败时提供更安全的回退方案
+				escapedStr := strings.Replace(fmt.Sprintf("%v", value), `"`, `\"`, -1)
+				valueBytes = []byte(`"` + escapedStr + `"`)
+			}
 		}
 
 		if key == "level" {
